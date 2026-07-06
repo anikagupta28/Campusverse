@@ -90,14 +90,26 @@ app.post("/signup", async (req,res)=>{
     { upsert:true, new:true }
   );
 
+  try {
   await transporter.sendMail({
     from: process.env.EMAIL_USER,
     to: email,
-    subject: "Verify your account",
+    subject: "Login OTP",
     text: `Your OTP is ${otp}`
   });
 
-  res.json({success:true, message:"OTP sent", email, anonId: updatedUser.anonId});
+  res.json({
+    success: true,
+    email
+  });
+
+} catch (err) {
+  console.error("Mail Error:", err);
+
+  return res.status(500).json({
+    error: "Failed to send OTP email"
+  });
+}
 });
 
 // ================= LOGIN =================
@@ -116,8 +128,26 @@ app.post("/login", async (req,res)=>{
   user.otpExpires = new Date(Date.now() + 5*60*1000);
   await user.save();
 
-  await transporter.sendMail({from: process.env.EMAIL_USER, to: email, subject:"Login OTP", text:`Your OTP is ${otp}`});
-  res.json({success:true,email});
+  try {
+  await transporter.sendMail({
+    from: process.env.EMAIL_USER,
+    to: email,
+    subject: "Login OTP",
+    text: `Your OTP is ${otp}`
+  });
+
+  res.json({
+    success: true,
+    email
+  });
+
+} catch (err) {
+  console.error("Mail Error:", err);
+
+  return res.status(500).json({
+    error: "Failed to send OTP email"
+  });
+}
 });
 
 // ================= VERIFY OTP =================
