@@ -28,11 +28,7 @@ const uploadsDir = path.resolve("uploads");
 if (!fs.existsSync(uploadsDir)) fs.mkdirSync(uploadsDir, { recursive: true });
 
 app.use(cors({
-  origin: [
-    "http://localhost:5173",
-    "https://campusverse-5vpb.vercel.app"
-  ],
-  methods: ["GET", "POST", "PUT", "DELETE"],
+  origin: true,
   credentials: true
 }));
 app.use(express.json());
