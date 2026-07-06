@@ -87,7 +87,7 @@ const getAnon = (userId) => {
   };
 
   const fetchUserStats = () => {
-    fetch(`http://localhost:5050/api/talknest/user-stats/${userId}`)
+    fetch(`${import.meta.env.VITE_API_URL}/api/talknest/user-stats/${userId}`)
       .then(res => res.json())
       .then(data => setUserStats(data));
   };
@@ -128,7 +128,7 @@ const getAnon = (userId) => {
     if (!text?.trim()) return;
 
     try {
-      const res = await fetch(`http://localhost:5050/api/talknest/${postId}/reply`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/talknest/${postId}/reply`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json"
@@ -157,7 +157,7 @@ const getAnon = (userId) => {
 
   const toggleLike = async (postId) => {
     if (!postId) return;
-    const res = await fetch(`http://localhost:5050/api/talknest/${postId}/like`, {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/talknest${postId}/like`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ userId })
@@ -180,7 +180,7 @@ const getAnon = (userId) => {
   const toggleFire = async (postId) => {
     if (!postId) return;
     try {
-      const res = await fetch(`http://localhost:5050/api/talknest/${postId}/fire`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/talknest${postId}/fire`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userId })
@@ -203,7 +203,7 @@ const getAnon = (userId) => {
 
   const toggleReplyLike = async (postId, replyId) => {
     const res = await fetch(
-      `http://localhost:5050/api/talknest/${postId}/reply/${replyId}/like`,
+      `${import.meta.env.VITE_API_URL}/api/talknest/${postId}/reply/${replyId}/like`,
       {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
@@ -231,7 +231,7 @@ const getAnon = (userId) => {
 
   const toggleReplyFire = async (postId, replyId) => {
     const res = await fetch(
-      `http://localhost:5050/api/talknest/${postId}/reply/${replyId}/fire`,
+      `${import.meta.env.VITE_API_URL}/api/talknest/${postId}/reply/${replyId}/fire`,
       {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
@@ -268,7 +268,7 @@ const getAnon = (userId) => {
       return;
     }
 
-    const res = await fetch("http://localhost:5050/api/talknest", {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/talknest`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

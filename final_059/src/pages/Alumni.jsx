@@ -134,7 +134,14 @@ export default function Alumni() {
                     >
                       <div className="alumni-image-wrapper">
                         {item.image ? (
-                          <img src={item.image} alt={item.name} className="alumni-image" />
+                          <img
+  src={item.image.replace(
+    "${import.meta.env.VITE_API_URL}",
+    import.meta.env.VITE_API_URL
+  )}
+  alt={item.name}
+  className="alumni-image"
+/>
                         ) : (
                           <div className="alumni-image-placeholder">
                             {item.name.charAt(0).toUpperCase()}
