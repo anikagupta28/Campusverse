@@ -324,7 +324,7 @@ export default function AdminNotices() {
 
             {n.fileType === "IMAGE" && (
               <img
-                 src={`http://localhost:5050${n.attachment}`}
+                 src={`${import.meta.env.VITE_API_URL}${n.attachment}`}
                 alt="notice"
                 style={{width:"100%",marginTop:"10px"}}
               />

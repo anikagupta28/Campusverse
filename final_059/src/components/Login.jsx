@@ -4,7 +4,7 @@ import "../styles/Login.css";
 
 export default function Login() {
   // ⚠️ IMPORTANT: NO /api/auth
-  const API_BASE = "http://localhost:5050";
+  const API_BASE = import.meta.env.VITE_API_URL;
 
   const [isLogin, setIsLogin] = useState(true);
   const [loading, setLoading] = useState(false);

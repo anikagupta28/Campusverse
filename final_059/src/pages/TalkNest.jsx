@@ -302,7 +302,7 @@ const getAnon = (userId) => {
     }, []);
 
   useEffect(() => {
-    fetch("http://localhost:5050/api/talknest")
+    fetch(`${import.meta.env.VITE_API_URL}/api/talknest`)
       .then(res => res.json())
       .then(data => {
         const fixed = data.map(p => ({

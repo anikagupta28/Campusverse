@@ -99,7 +99,7 @@ export default function Notex() {
       : "image"
     : "text",
   file: notice.attachment
-    ? `http://localhost:5050${notice.attachment}`
+    ? `${import.meta.env.VITE_API_URL}${notice.attachment}`
     : "",
   tag: notice.category || "Notice",
   date: notice.date
