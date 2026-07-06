@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import './Review.css'
-
+const API = `${import.meta.env.VITE_API_URL}/api`;
 const Review = () => {
   const userId = localStorage.getItem('token')
   const [showAllReviews, setShowAllReviews] = useState(false)
@@ -48,7 +48,7 @@ const Review = () => {
     const fetchReviews = async () => {
       try {
         setLoading(true)
-        const res = await fetch('/api/reviews/')
+        const res = await fetch(`${API}/reviews`)
         
         // Check if response is JSON
         const contentType = res.headers.get('content-type')
@@ -125,7 +125,7 @@ const Review = () => {
     try {
       setSubmitting(true)
 
-      const res = await fetch('/api/reviews/add', {
+      const res = await fetch('${API}/reviews/add', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
