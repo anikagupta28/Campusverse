@@ -1,0 +1,53 @@
+.chatbot-icon-wrapper {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 1000;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Cute icon */
+.chatbot-icon {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: white;
+  font-size: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+  transition: transform 0.2s ease;
+}
+
+/* Tooltip ABOVE icon */
+.chatbot-tooltip {
+  background: #111827;
+  color: #fff;
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 12px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(6px);
+  transition: all 0.25s ease;
+  display: none;
+}
+
+/* Show ONLY on hover */
+.chatbot-icon-wrapper:hover .chatbot-tooltip {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Cute hover */
+.chatbot-icon-wrapper:hover .chatbot-icon {
+  transform: scale(1.05);
+}
+
+

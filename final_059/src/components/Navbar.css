@@ -1,0 +1,258 @@
+/* ═══════════════════════════════════════════════════
+   NAVBAR  —  Fixed · Glassmorphism · CampusVerse
+   ═══════════════════════════════════════════════════ */
+
+.cv-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+
+  /* Always blue — even on landing */
+  background: rgba(10, 14, 60, 0.78);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  transition:
+    background 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+/* Scrolled state — frosted glass */
+.cv-nav--scrolled {
+  background: rgba(10, 14, 60, 0.75);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+/* ── Inner container ─────────────────────────────── */
+.cv-nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+  height: 64px;
+}
+
+/* ── Logo ────────────────────────────────────────── */
+.cv-nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.cv-nav-logo-icon {
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.cv-nav-logo-text {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+}
+
+/* ── Desktop links ───────────────────────────────── */
+.cv-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cv-nav-link {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  padding: 7px 14px;
+  border-radius: 8px;
+  transition: color 0.2s ease, background 0.2s ease;
+  white-space: nowrap;
+}
+
+.cv-nav-link:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.cv-nav-link.is-active {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ── Right side ──────────────────────────────────── */
+.cv-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.cv-nav-cta {
+  cursor: pointer; font-family: inherit;
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #ffffff;
+  text-decoration: none;
+  background: #6C3DEB;
+  border: 1px solid rgba(108, 61, 235, 0.6);
+  padding: 8px 18px;
+  border-radius: 8px;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 12px rgba(108, 61, 235, 0.35);
+  white-space: nowrap;
+}
+
+.cv-nav-cta:hover {
+  background: #7c45f5;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(108, 61, 235, 0.5);
+}
+
+/* ── Hamburger ───────────────────────────────────── */
+.cv-nav-burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s ease;
+}
+
+.cv-nav-burger:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.cv-nav-burger span {
+  display: block;
+  width: 16px;
+  height: 1.5px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+/* Burger → X */
+.cv-nav-burger.is-open span:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+.cv-nav-burger.is-open span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.cv-nav-burger.is-open span:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
+/* ── Mobile menu ─────────────────────────────────── */
+.cv-nav-mobile {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 20px 20px;
+  background: rgba(10, 14, 60, 0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+
+  /* Hidden by default */
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.35s ease, opacity 0.3s ease, padding 0.3s ease;
+}
+
+.cv-nav--open .cv-nav-mobile {
+  max-height: 500px;
+  opacity: 1;
+}
+
+.cv-nav-mobile-link {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  padding: 11px 14px;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+
+.cv-nav-mobile-link:hover,
+.cv-nav-mobile-link.is-active {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.cv-nav-mobile-cta {
+  cursor: pointer; font-family: inherit; border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 8px;
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #ffffff;
+  text-decoration: none;
+  background: #6C3DEB;
+  padding: 12px 20px;
+  border-radius: 10px;
+  transition: background 0.2s ease;
+}
+
+.cv-nav-mobile-cta:hover { background: #7c45f5; }
+
+/* Logo image */
+.cv-nav-logo-img {
+  height: 32px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Push links to right side */
+.cv-nav-links-right {
+  margin-left: auto;
+}
+
+/* ── Responsive ──────────────────────────────────── */
+@media (max-width: 900px) {
+  .cv-nav-links { display: none; }
+  .cv-nav-cta   { display: none; }
+  .cv-nav-burger { display: flex; }
+  .cv-nav-mobile { display: flex; }
+}
+
+@media (max-width: 480px) {
+  .cv-nav-inner { padding: 0 20px; }
+}
+
+/* ── Push page content below fixed navbar ────────── */
+/* Add this to your global/App.css or body:
+   padding-top: 64px;
+   OR add to your mm-hero:
+   padding-top: 64px;
+*/

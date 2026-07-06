@@ -1,0 +1,9 @@
+.content {
+  min-height: 80vh;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: black;
+}

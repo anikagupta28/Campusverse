@@ -1,0 +1,193 @@
+/* --- 1. MAIN CONTAINER (Fits screen under navbar) --- */
+.campus-container {
+  position: relative;
+  width: 100%;
+  /* Subtracts navbar height so no scrollbar appears */
+  height: calc(100vh - 70px); 
+  overflow: hidden;
+  background: black;
+  font-family: sans-serif; /* Keeps your original font */
+}
+
+/* --- 2. VIDEO SECTION (Using your preferred styles) --- */
+.video-section {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: black;
+}
+
+/* The Video acts as a background image */
+.fullscreen-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Fills screen perfectly */
+  z-index: 1;
+  opacity: 0.7; /* Slightly darkened so text pops */
+}
+
+/* Text floating on top */
+.overlay-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: white;
+  padding: 20px;
+}
+
+.overlay-content h1 {
+  font-size: 3.5rem;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+  font-weight: bold;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+}
+
+/* --- 3. DIVE IN BUTTON (The transition trigger) --- */
+.dive-in-btn {
+  padding: 15px 40px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+  background: #43444b;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(255, 43, 213, 0.4);
+  transition: transform 0.2s, background 0.2s;
+  animation: slideUp 0.8s ease-out;
+}
+
+.dive-in-btn:hover {
+  background: #ff416c;
+  transform: scale(1.05);
+}
+
+/* --- 4. TOUR SECTION (The Interactive Part) --- */
+.tour-section {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.loader {
+  color: white;
+  font-size: 1.2rem;
+  background: rgba(0,0,0,0.7);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* Hotspot Bubbles */
+.hotspot-label {
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  white-space: nowrap;
+  font-family: sans-serif;
+}
+
+.hotspot-label:hover {
+  background: #ff4b2b;
+  color: white;
+}
+
+/* --- 5. TOP RIGHT MENU --- */
+.tour-menu {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.15); /* Glass effect */
+  backdrop-filter: blur(10px);
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.2);
+  min-width: 180px;
+  z-index: 10;
+}
+
+.tour-menu h3 {
+  margin: 0 0 10px 0;
+  font-size: 1rem;
+  color: white;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  padding-bottom: 5px;
+  font-family: sans-serif;
+}
+
+.tour-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tour-menu button {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  border-radius: 6px;
+  color: rgba(255,255,255,0.9);
+  font-size: 0.95rem;
+  font-family: sans-serif;
+  transition: background 0.2s;
+}
+
+.tour-menu button:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.tour-menu button.active {
+  background: white;
+  color: black;
+  font-weight: bold;
+}
+
+/* --- 6. BOTTOM INFO BAR --- */
+.tour-info {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+  pointer-events: none;
+  width: 100%;
+}
+
+.tour-note {
+  margin-top: 18px;
+  max-width: 500px;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.12);
+  border-left: 4px solid #facc15;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 14px;
+  line-height: 1.5;
+  backdrop-filter: blur(8px);
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
