@@ -62,11 +62,18 @@ export default function CampusBot() {
 
     setTimeout(async () => {
       try {
-        const res = await fetch("http://localhost:5000/chatbot/chat", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ message: userText }),
-        });
+        const res = await fetch(
+  `${import.meta.env.VITE_CHATBOT_URL}/chatbot/chat`,
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      message: userText,
+    }),
+  }
+);
 
         const data = await res.json();
         streamMessage(data.reply);
